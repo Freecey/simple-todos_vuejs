@@ -2,6 +2,10 @@
 
 > a simple todo list in VueJS
 
+## Live
+
+https://cey-todo-vuejs.netlify.app/
+
 ## Build Setup
 
 ``` bash
