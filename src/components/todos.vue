@@ -16,7 +16,8 @@
         <li
           class="todo"
           v-for="todo in filteredTodos"
-          :class="{ completed: todo.completed , editing: todo === editing}">
+          :class="{ completed: todo.completed , editing: todo === editing}"
+          v-bind:key="todo.name">
           <div class="view">
             <input type="checkbox" v-model="todo.completed" class="toggle"/>
             <label @dblclick="editTodo(todo)">{{ todo.name }}</label>
@@ -78,20 +79,19 @@ export default {
       this.editing = null
     },
     cancelEdit () {
-      this.editing.name = this.oldTodos,
+      this.editing.name = this.oldTodos
       this.doneEdit()
     }
   },
   computed: {
     allDone: {
-      get (){
+      get () {
         return this.remaining === 0
       },
       set (value) {
         this.todos.forEach(todo => {
           todo.completed = value
         })
-
       }
     },
     remaining () {
@@ -113,13 +113,12 @@ export default {
     }
   },
   directives: {
-    focus (el, value) {
+    focus: function (el, value) {
       if (value) {
         Vue.nextTick(_ => {
           el.focus()
         })
       }
-
     }
   }
 }
